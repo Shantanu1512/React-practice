@@ -53,6 +53,32 @@ export class Service{
             console.log("Error in deltePost", error)
         }
     }
+
+    async getPost(slug){
+        try {
+            return await this.databases.getDocument(
+                config.appwriteDatabaseId,
+                config.appwriteCollectionId,
+                slug
+            )
+        } catch (error) {
+            console.log("Error in getPost method", error);
+            
+        }
+    }
+
+    async getAllActivePosts(queries = [Query.equal("status","active")]){
+        try {
+            return await this.databases.listDocuments(
+                config.appwriteCollectionId,
+                config.appwriteDatabaseId,
+                queries
+            )
+        } catch (error) {
+            console.log("Error in get all active posts", error);
+            
+        }
+    }
 }
 
 const service = new Service()
