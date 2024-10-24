@@ -41,6 +41,18 @@ export class Service{
             
         }
     }
+
+    async deletePost(slug){
+        try {
+            return await this.databases.deleteDocument(
+                config.appwriteDatabaseId,
+                config.appwriteCollectionId,
+                slug
+            )
+        } catch (error) {
+            console.log("Error in deltePost", error)
+        }
+    }
 }
 
 const service = new Service()
