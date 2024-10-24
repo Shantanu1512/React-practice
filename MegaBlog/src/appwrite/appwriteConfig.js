@@ -27,6 +27,20 @@ export class Service{
             console.log("Error in createPost method", error)
         }
     }
+
+    async updatePost(slug, {title, content, featuredImage, status}){
+        try {
+            return await this.databases.updateDocument(
+                config.appwriteDatabaseId,
+                config.appwriteCollectionId,
+                slug,
+                {title, content, featuredImage, status}
+            )
+        } catch (error) {
+            console.log("Error in updatePost method", error);
+            
+        }
+    }
 }
 
 const service = new Service()
