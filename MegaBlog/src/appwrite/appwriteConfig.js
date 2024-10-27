@@ -79,6 +79,8 @@ export class Service{
             
         }
     }
+
+    //file upload method
 }
 
 const service = new Service()
